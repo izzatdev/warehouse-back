@@ -1,0 +1,23 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="itoshpulatov" id="init admins">
+        <validCheckSum>any</validCheckSum>
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="users"/>
+        </preConditions>
+        <insert tableName="users">
+            <column name="full_name" value="SUPER_ADMIN"/>
+            <column name="email" value="super"/>
+            <column name="password" value="$2a$10$lY6kIzvU/cBPNEHkRaW8.uUou9a2akt7Kh.SA7scMjGDfZ8ogzVXS"/>
+            <column name="role" value="ROLE_SUPER_ADMIN"/>
+        </insert>
+        <insert tableName="users">
+            <column name="full_name" value="ADMIN"/>
+            <column name="email" value="admin"/>
+            <column name="password" value="$2a$10$Aqzz0nWsqgmbdfq1rdIsce4kFaS9PC8w6xjsmZYqIOKR4wnHgLsXK"/>
+            <column name="role" value="ROLE_ADMIN"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
